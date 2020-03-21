@@ -1,0 +1,20 @@
+{
+  "name": "makerlog-buymeacoffee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mihai Voinea <hi@voinea.me>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "prettier": "^1.19.1"
+  }
+}

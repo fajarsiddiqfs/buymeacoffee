@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Buy Me A Coffee for Makerlog</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:700|Cookie" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <h1>Buy Me A Coffee for Makerlog</h1>
+</header>
+<main>
+    <label for="bmc">Enter your Buy Me A Coffee profile:</label>
+    <input type="text" name="bmc" id="bmc">
+    <label for="makerlog">Enter your Makerlog Webhook:</label>
+    <input type="text" name="makerlog" id="makerlog">
+    <label for="result">Your webhook is:</label>
+    <input type="text" name="result" readonly="readonly" id="result" onclick="this.select();" />
+    <p>&uarr; Enter this webhook on Buy Me A Coffee.</p>
+    <strong>IMPORTANT: Do not share your webhook url anywhere!</strong><br/>
+    <a href="https://youtu.be/ODtczftXi_E">Video tutorial here &rarr;</a>
+</main>
+<footer>
+    Made by <a href="https://getmakerlog.com/@voinea">Mihai Voinea</a><br/>
+    If you found this is useful, you can buy me a coffee:<br/>
+
+    <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/voinea">
+        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
+        Buy me a coffee
+    </a>
+</footer>
+<script>
+    const bmcInput = document.getElementById('bmc');
+    const makerlogInput = document.getElementById('makerlog');
+    const resultEl = document.getElementById('result');
+    bmcInput.addEventListener('input', generateWebhookUrl);
+    makerlogInput.addEventListener('input', generateWebhookUrl);
+
+    function generateWebhookUrl(e) {
+        const secret = makerlogInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
+        const username = bmcInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
+        if (secret !== null && username !== null && username !== "" && secret !== "") {
+            resultEl.value = window.location.protocol + "//" + window.location.hostname + "/.netlify/functions/webhook/" + secret + "/" + username;
+        }
+    }
+</script>
+</body>
+</html>
