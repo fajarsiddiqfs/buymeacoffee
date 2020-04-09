@@ -96,3 +96,8 @@ p   {
 #result {
     cursor: pointer;
 }
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
